@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import NoteCard from '../../components/Cards/NoteCard';
 import { MdAdd } from 'react-icons/md';
@@ -67,7 +67,7 @@ const Home = () => {
   const getAllNotes = async () => {
     try {
       const response = await axiosInstance.get('/get-all-notes');
-      console.log('response :' + JSON.stringify(response, null, 2));
+      // console.log('response :' + JSON.stringify(response, null, 2));
       if (response.data && response.data.notes) {
         setAllNotes(response.data.notes);
       }
@@ -86,7 +86,7 @@ const Home = () => {
         getAllNotes();
       }
     } catch (error) {
-      console.log('An unexpected error occurred. Please try again');
+      console.log('An unexpected error occurred. Please try again',error);
     }
   };
 
@@ -117,9 +117,11 @@ const Home = () => {
         const response = await axiosInstance.put('/update-note-pinned/'+noteId ,{
        isPinned : !noteId.isPinned
         })
-        if(response.data && response.data.note){
+         if(response.data && response.data.note && response.data.note.isPinned == true){
           showToastMessage('Note pinned successfully')
           getAllNotes();
+        }else{
+          showToastMessage('Note unpinned successfully')
         }
       }catch(error){
         console.log(error)
@@ -142,7 +144,7 @@ const Home = () => {
       <div className="container mx-auto">
         {allNote.length > 0 ? (
           <div className="grid grid-cols-3 gap-4 mt-8">
-            {allNote.map((items, index) => (
+            {allNote.map((items) => (
               <NoteCard
                 key={items._id}
                 title={items.title}

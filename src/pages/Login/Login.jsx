@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import PasswordInput from '../../components/Input/PasswordInput'
@@ -36,7 +36,7 @@ const Login = () => {
 
           if(response.data && response.data.accessToken){
             localStorage.setItem("token",response.data.accessToken)
-            navigate('/dashboard')
+            navigate('/')
           }
 
          }catch(error){

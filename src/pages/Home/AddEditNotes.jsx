@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { MdClose} from 'react-icons/md'
 import TagInput from '../../components/Input/TagInput'
 import axiosInstance from '../../utils/axiosInstance'
@@ -20,7 +20,8 @@ const AddEditNotes = ({ noteData , type , getAllNotes , onClose ,showToastMessag
            const response = await axiosInstance.post('/add-note',{
             title,
             content,
-            tags
+            tags,
+            // user
            })
           //  console.log('Response:', JSON.stringify(response, null, 2));
              console.log(response.data , response.data.note)

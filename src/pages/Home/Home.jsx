@@ -139,7 +139,25 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="  px-9 py-3 mb-6">
+     {/* <div className="sticky top-0 z-20 bg-white/70 backdrop-blur-md border-b border-gray-200 
+                  flex flex-col sm:flex-row items-center justify-between px-4 py-3 mb-6 shadow-sm rounded-lg">
+    <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-800 tracking-tight">
+      📝 My Notes
+    </h1>
+    {userInfo && (
+      <div className="flex items-center gap-3 mt-2 sm:mt-0">
+        <span className="text-sm text-gray-500 hidden sm:block">
+          Welcome, <span className="font-semibold text-gray-700">{userInfo.name}</span>
+        </span>
+        <img
+          src={userInfo.avatar || "https://ui-avatars.com/api/?name=" + userInfo.name}
+          alt="profile"
+          className="w-9 h-9 rounded-full border shadow-sm"
+        />
+      </div>
+    )}
+  </div> */}
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch}/>
       <div className="container mx-auto">
         {allNote.length > 0 ? (
@@ -205,7 +223,7 @@ const Home = () => {
         type={showToastMsg.type}
         onClose={handleCloseToast}
       />
-    </>
+    </div>
   );
 };
 

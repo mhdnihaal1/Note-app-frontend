@@ -1,6 +1,6 @@
 import React from 'react'
 import { getInitails } from '../../utils/Helper'
-
+ 
 const ProfileInfo = ({ userInfo, onLogout }) => {
   return (
     <div
